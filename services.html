@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#122145;
+    --ink-soft:#3a4a72;
+    --paper:#f6f6f4;
+    --card-bg:#e9e9e6;
+    --gold:#c8933f;
+    --gold-light:#e7b96a;
+    --overlay:rgba(10,16,36,0.86);
+    --radius:14px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    background:var(--paper);
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .services{
+    max-width:1320px;
+    margin:0 auto;
+    padding:96px 32px 120px;
+  }
+
+  .services-head{
+    text-align:center;
+    margin-bottom:72px;
+  }
+
+  .eyebrow{
+    display:inline-block;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:18px;
+  }
+
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:clamp(42px,6vw,72px);
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+
+  .subhead{
+    margin:20px auto 0;
+    max-width:560px;
+    font-size:18px;
+    line-height:1.6;
+    color:var(--ink-soft);
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+  }
+
+  .card{
+    position:relative;
+    aspect-ratio:0.65/1;
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:var(--card-bg);
+    isolation:isolate;
+    cursor:pointer;
+  }
+
+  .card img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transform:scale(1);
+    transition:transform 0.65s cubic-bezier(0.16,1,0.3,1);
+    will-change:transform;
+  }
+
+  .card:hover img,
+  .card:focus-within img{
+    transform:scale(1.14);
+  }
+
+  .card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:var(--overlay);
+    opacity:0;
+    transition:opacity 0.45s ease;
+  }
+
+  .card:hover::after,
+  .card:focus-within::after{
+    opacity:1;
+  }
+
+  .card-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:32px 24px;
+    opacity:0;
+    transform:translateY(10px);
+    transition:opacity 0.4s ease 0.05s, transform 0.5s cubic-bezier(0.16,1,0.3,1) 0.05s;
+    z-index:2;
+  }
+
+  .card:hover .card-overlay,
+  .card:focus-within .card-overlay{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  .card-index{
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    font-weight:600;
+    margin-bottom:14px;
+  }
+
+  .card-title{
+    font-family:'Fraunces',serif;
+    font-size:23px;
+    font-weight:600;
+    color:#fdfdfc;
+    line-height:1.25;
+    margin-bottom:10px;
+  }
+
+  .card-copy{
+    font-size:14px;
+    line-height:1.55;
+    color:#d7dcea;
+    max-width:220px;
+    margin-bottom:26px;
+  }
+
+  .card-btn{
+    appearance:none;
+    border:1px solid rgba(255,255,255,0.6);
+    background:transparent;
+    color:#fdfdfc;
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.03em;
+    padding:11px 22px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .card-btn:hover{
+    background:var(--gold);
+    border-color:var(--gold);
+    color:#14213d;
+  }
+
+  /* always-visible caption strip, fades out on hover to let overlay take over */
+  .card-caption{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:20px 18px;
+    background:linear-gradient(to top, rgba(9,14,32,0.75), rgba(9,14,32,0));
+    color:#fdfdfc;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.01em;
+    opacity:1;
+    transition:opacity 0.3s ease;
+    z-index:1;
+  }
+
+  .card:hover .card-caption,
+  .card:focus-within .card-caption{
+    opacity:0;
+  }
+
+  @media (max-width:1080px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .card{aspect-ratio:1.1/1;}
+  }
+
+  @media (max-width:560px){
+    .grid{grid-template-columns:1fr;}
+    .card{aspect-ratio:1.2/1;}
+    .services{padding:64px 20px 80px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .card img, .card::after, .card-overlay, .card-caption{
+      transition:none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="services">
+  <div class="services-head">
+    <span class="eyebrow">What we do</span>
+    <h1>Services</h1>
+    <p class="subhead">From the first sample handed out to the last billboard seen, we build the moments that turn a brand into an experience.</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card" tabindex="0">
+      <img src="img1.jpg" alt="Product sampling with branded coffee pouches and pins">
+      <div class="card-caption">Sampling &amp; Distribution</div>
+      <div class="card-overlay">
+        <span class="card-index">01</span>
+        <h3 class="card-title">Sampling &amp; Distribution</h3>
+        <p class="card-copy">Getting real product into real hands, on the street and in the room.</p>
+        <button class="card-btn" type="button">See the work</button>
+      </div>
+    </div>
+
+    <div class="card" tabindex="0">
+      <img src="img2.jpg" alt="Event promotion kit with branded tote bag and printed materials">
+      <div class="card-caption">Event Kits &amp; Collateral</div>
+      <div class="card-overlay">
+        <span class="card-index">02</span>
+        <h3 class="card-title">Event Kits &amp; Collateral</h3>
+        <p class="card-copy">Branded materials designed for every touchpoint of the day.</p>
+        <button class="card-btn" type="button">See the work</button>
+      </div>
+    </div>
+
+    <div class="card" tabindex="0">
+      <img src="img3.jpg" alt="Live event stage with lighting and crowd silhouettes">
+      <div class="card-caption">Live Events</div>
+      <div class="card-overlay">
+        <span class="card-index">03</span>
+        <h3 class="card-title">Live Events</h3>
+        <p class="card-copy">Staging, lighting and production that fill a room with energy.</p>
+        <button class="card-btn" type="button">See the work</button>
+      </div>
+    </div>
+
+    <div class="card" tabindex="0">
+      <img src="img4.jpg" alt="Outdoor billboard advertising campaign">
+      <div class="card-caption">Outdoor &amp; OOH</div>
+      <div class="card-overlay">
+        <span class="card-index">04</span>
+        <h3 class="card-title">Outdoor &amp; OOH</h3>
+        <p class="card-copy">Placements built to be unmissable, wherever the city looks up.</p>
+        <button class="card-btn" type="button">See the work</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
