@@ -36,25 +36,25 @@ const observer = new IntersectionObserver(
 const services = [
     {
       index: "01",
-      image: "/assets/img-service1.png",
+      image: "assets/img-service1.png",
       title: "Brand Activation",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     {
       index: "02",
-      image: "/assets/img-service2.png",
+      image: "assets/img-service2.png",
       title: "Brand Exhibition",
       body: "Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos."
     },
     {
       index: "03",
-      image: "/assets/img-service3.png",
+      image: "assets/img-service3.png",
       title: "Event Management",
       body: "In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere."
     },
     {
       index: "04",
-      image: "/assets/img-service4.png",
+      image: "assets/img-service4.png",
       title: "Booth Production",
       body: "Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat."
     }
