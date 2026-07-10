@@ -18,7 +18,7 @@
         <a href="#services">Services</a>
         <a href="#scope">Scope</a>
         <a href="#projects">Projects</a>
-        <a class="nav-cta" href="#contact">Contact</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
 
@@ -70,57 +70,55 @@
           </p>
         </div>
         <div class="about-media reveal">
-          <img class="photo-main" src="assets/about-workshop.png" alt="Workshop planning session">
-          <img class="photo-tall" src="assets/about-credential.png" alt="Dualana credential material">
+            <img class="photo-main" src="assets/about-workshop.png" alt="Dualana planning session">
+            <img class="photo-tall" src="assets/about-credential.png" alt="Dualana credential material">
         </div>
       </section>
 
-
-
       <section class="services section-wrap" id="services">
+        
         <div class="section-heading reveal">
           <h2>Services</h2>
           <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
         </div>
 
         <div class="grid">
-
-          <div class="card" tabindex="0">
+          <div class="card" tabindex="0" data-service="0">
             <img src="assets/img-service1.png" alt="Brand exhibition merchandise">
             <div class="card-overlay">
-              <h3 class="card-title">Brand Exhibition</h3>
-              <button class="card-btn" type="button">See the detail</button>
+              <h3 class="card-title">Brand Activation</h3>
+              <button class="card-btn" type="button" data-open="0">See the detail</button>
             </div>
           </div>
 
-          <div class="card" tabindex="0">
+          <div class="card" tabindex="0" data-service="1">
             <img src="assets/img-service2.png" alt="Event management planning material">
             <div class="card-overlay">
-              <h3 class="card-title">Event Management</h3>
-              <button class="card-btn" type="button">See the detail</button>
+              <h3 class="card-title">Brand Exhibition</h3>
+              <button class="card-btn" type="button" data-open="1">See the detail</button>
             </div>
           </div>
 
-          <div class="card" tabindex="0">
+          <div class="card" tabindex="0" data-service="2">
             <img src="assets/img-service3.png" alt="Event production">
             <div class="card-overlay">
-              <h3 class="card-title">Event Production</h3>
-              <button class="card-btn" type="button">See the detail</button>
+              <h3 class="card-title">Event Management</h3>
+              <button class="card-btn" type="button" data-open="2">See the detail</button>
             </div>
           </div>
 
-          <div class="card" tabindex="0">
+          <div class="card" tabindex="0" data-service="3">
             <img src="assets/img-service4.png" alt="Brand activation">
             <div class="card-overlay">
-              <h3 class="card-title">Brand Activation</h3>
-              <button class="card-btn" type="button">See the detail</button>
+              <h3 class="card-title">Booth Production</h3>
+              <button class="card-btn" type="button" data-open="3">See the detail</button>
             </div>
           </div>
         </div>
 
       </section>
 
-      <section class="scope" id="scope">
+      <section class="scope fullscreen-section" id="scope">
         <div class="section-wrap scope-inner">
           <div class="scope-heading reveal">
             <h2>Scope</h2>
@@ -143,23 +141,51 @@
       </section>
 
       <section class="projects section-wrap" id="projects">
-        <div class="corner-mark" aria-hidden="true"></div>
         <div class="section-heading left reveal">
           <h2>Projects</h2>
           <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
         </div>
         <div class="project-grid">
-          <article class="project-tile reveal"><img src="assets/project-booth.png" alt="Exhibition booth project"></article>
-          <article class="project-tile wide reveal">
-            <img src="assets/project-indocomtech.png" alt="Indocomtech exhibition project">
-            <div>
+          <article class="project-tile project-1 reveal">
+            <img src="assets/imgprojects2.png" alt="Exhibition booth project">
+            <div class="project-overlay">
               <h3>Indocomtech</h3>
-              <p>Merchandising, Portable Booth, Inside Booth, Backwall, Photobooth, Entrance Gate</p>
+              <p>Portable Booth • Backwall • Entrance Gate</p>
+              <a href="#" class="project-btn"> View Project</a>
             </div>
           </article>
-          <article class="project-tile reveal"><img src="assets/project-crowd.png" alt="Audience event project"></article>
-          <article class="project-tile reveal"><img src="assets/project-display.png" alt="Red brand booth display"></article>
-          <article class="project-tile reveal"><img src="assets/project-balloons.png" alt="Yellow activation props"></article>
+          <article class="project-tile project-2 reveal">
+            <img src="assets/imgprojects1.png" alt="Indocomtech exhibition project">
+            <div class="project-overlay">
+              <h3>Indocomtech</h3>
+              <p>Portable Booth • Backwall • Entrance Gate</p>
+              <a href="#" class="project-btn"> View Project</a>
+            </div>
+          </article>
+          <article class="project-tile project-3 reveal">
+            <img src="assets/imgprojects3.png" alt="Audience event project">
+            <div class="project-overlay">
+              <h3>Indocomtech</h3>
+              <p>Portable Booth • Backwall • Entrance Gate</p>
+              <a href="#" class="project-btn"> View Project</a>
+            </div>
+          </article>
+          <article class="project-tile project-4 reveal">
+            <img src="assets/imgprojects4.png" alt="Red brand booth display">
+            <div class="project-overlay">
+              <h3>Indocomtech</h3>
+              <p>Portable Booth • Backwall • Entrance Gate</p>
+              <a href="#" class="project-btn"> View Project</a>
+            </div>
+          </article>
+          <article class="project-tile project-5 reveal">
+            <img src="assets/imgprojects5.png" alt="Yellow activation props">
+            <div class="project-overlay">
+              <h3>Indocomtech</h3>
+              <p>Portable Booth • Backwall • Entrance Gate</p>
+              <a href="#" class="project-btn"> View Project</a>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -219,6 +245,24 @@
         <a href="#" aria-label="LinkedIn">in</a>
       </div>
     </footer>
+
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-backdrop"></div>
+      <div class="modal-inner">
+        <div class="modal-media">
+          <img id="modalImage" src="" alt="">
+        </div>
+        <div class="modal-text">
+          <span class="modal-index" id="modalIndex"></span>
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <!-- 
+           -->
+          <p class="modal-body" id="modalBody"></p>
+        </div>
+      </div>
+      <button class="modal-close" id="modalClose" type="button" aria-label="Close">&times;</button>
+    </div>
+
     <script src="js/script.js"></script>
   </body>
 </html>
