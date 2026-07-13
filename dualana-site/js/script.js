@@ -33,32 +33,6 @@ const observer = new IntersectionObserver(
 
 
 // ini untuk fullscreen modal
-const services = [
-    {
-      index: "01",
-      image: "assets/img-service1.png",
-      title: "Brand Activation",
-      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    },
-    {
-      index: "02",
-      image: "assets/img-service2.png",
-      title: "Brand Exhibition",
-      body: "Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos."
-    },
-    {
-      index: "03",
-      image: "assets/img-service3.png",
-      title: "Event Management",
-      body: "In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere."
-    },
-    {
-      index: "04",
-      image: "assets/img-service4.png",
-      title: "Booth Production",
-      body: "Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat."
-    }
-  ];
 
   const modal = document.getElementById('modal');
   const modalImage = document.getElementById('modalImage');
@@ -69,20 +43,22 @@ const services = [
 
   let lastFocused = null;
 
-  function openModal(i){
-    const data = services[i];
-    if(!data) return;
-    modalImage.src = data.image;
-    modalImage.alt = data.title;
-    modalIndex.textContent = data.index;
-    modalTitle.textContent = data.title;
-    modalBody.textContent = data.body;
+  function openModal(card){
+
+    modalImage.src = card.dataset.image;
+    modalImage.alt = card.dataset.title;
+
+    modalIndex.textContent = card.dataset.index;
+    modalTitle.textContent = card.dataset.title;
+    modalBody.textContent = card.dataset.body;
 
     lastFocused = document.activeElement;
+
     document.body.classList.add('modal-open');
     modal.classList.add('is-open');
+
     modalClose.focus();
-  }
+}
 
   function closeModal(){
     modal.classList.remove('is-open');
@@ -90,21 +66,21 @@ const services = [
     if(lastFocused) lastFocused.focus();
   }
 
-  document.querySelectorAll('[data-open]').forEach(btn => {
+  document.querySelectorAll('.card-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      openModal(Number(btn.dataset.open));
+        e.stopPropagation();
+        const card = btn.closest('.card');
+        openModal(card);
     });
   });
 
-  // Clicking the card itself (outside the button) also opens its modal
   document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', () => openModal(Number(card.dataset.service)));
+    card.addEventListener('click', () => openModal(card));
     card.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter' || e.key === ' '){
-        e.preventDefault();
-        openModal(Number(card.dataset.service));
-      }
+        if(e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openModal(card);
+        }
     });
   });
 
