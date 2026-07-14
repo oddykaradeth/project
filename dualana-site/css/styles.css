@@ -118,14 +118,21 @@ a {
 }
 
 .hero-copy {
-  /*padding-top: 30px;*/
   display:flex;
   flex-direction:column;
   justify-content:center;
 }
 
+.hero-copy p {
+  margin: 0px 0px 32px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
 .hero-logo {
-  width:min(640px,100%);
+  width:min(640px,85%);
   margin-bottom:40px;
 }
 
@@ -179,7 +186,6 @@ a {
 .hero-art {
   position: relative;
   min-height: 550px;
-
   display:flex;
   justify-content:center;
   align-items:center;
@@ -394,7 +400,7 @@ a {
   left:32px;
   width:60%;
   transform:
-      translateY(-58%);
+    translateY(-58%);
 }
 
 .photo-tall {
@@ -403,7 +409,7 @@ a {
   width:60%;
   aspect-ratio: 4 / 5;
   transform:
-      translateY(-58%);
+    translateY(-58%);
 }
 
 .about-media{
@@ -518,7 +524,8 @@ h2 {
   position: relative;
   overflow: hidden;
   background: var(--blue);
-  color: var(--white);
+  color: var(--paper);
+  min-height: 100vh;
 }
 
 .scope-inner {
@@ -571,17 +578,20 @@ h2 {
 
 .pin {
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: var(--coral);
   box-shadow: 0 0 0 8px rgba(255, 98, 104, .1);
 }
 
-.pin-one { left: 10%; top: 34%; }
-.pin-two { left: 28%; top: 55%; }
-.pin-three { left: 53%; top: 53%; }
-.pin-four { right: 10%; top: 61%; }
+.pin-medan { left: 7%; top: 12%; }
+.pin-jakarta { left: 25%; bottom: 26%; }
+.pin-makasar { left: 53%; top: 64%; }
+.pin-balikpapan { left: 46%; top: 42%; }
+.pin-surabaya { left: 39%; top: 79%; }
+.pin-denpasar { left: 43%; top: 83%; }
+.pin-jayapura { right: 1%;top: 49%; }
 
 .map-label {
   position: absolute;
@@ -596,6 +606,45 @@ h2 {
   font-weight: 900;
   box-shadow: 0 18px 34px rgba(0, 0, 0, .14);
   white-space: nowrap;
+}
+
+.scope-map{
+    position:relative;
+    display:inline-block;
+    margin: 40px auto;
+}
+
+.indonesia-map{
+    display:block;
+    max-width:100%;
+}
+
+.map-popup{
+    position:absolute;
+    display:none;
+    min-width:180px;
+    padding:14px 18px;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 10px 35px rgba(0,0,0,.15);
+    transform:translate(-50%,-120%);
+    z-index:20;
+}
+
+.map-popup.active{
+    display:block;
+}
+
+.map-popup h4{
+    margin:0 0 6px;
+    font-size:18px;
+    color:#0D4F8B;
+}
+
+.map-popup p{
+    margin:0;
+    font-size:14px;
+    color:#666;
 }
 
 .projects {
@@ -625,15 +674,6 @@ h2 {
   right: 34px;
 }
 
-/*.corner-mark {
-  position: absolute;
-  right: 0;
-  bottom: -10px;
-  width: 128px;
-  height: 128px;
-  background: var(--coral);
-  clip-path: polygon(56% 0, 100% 0, 100% 100%, 0 100%, 0 56%, 56% 56%);
-}*/
 
 .project-grid{
   display:grid;
@@ -1202,7 +1242,6 @@ h2 {
     font-weight:600;
   }
 
-  /* --- Lightbox overlay --- */
 .lightbox{
   position:fixed;
   inset:0;
@@ -1281,10 +1320,10 @@ h2 {
   color:var(--white);
   cursor: pointer;
   transition:
-        background-color .25s ease,
-        color .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
+    background-color .25s ease,
+    color .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
 }
 
 .nav-arrow i {

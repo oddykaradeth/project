@@ -30,12 +30,9 @@
       <section class="hero section-wrap">
         <div class="hero-copy reveal">
           <img class="hero-logo" src="assets/aset-logo.png" alt="Dualana">
-          <!-- <div class="pill-row" aria-label="Capabilities">
-            <span>Brand Activation</span>
-            <span>Brand Exhibition</span>
-            <span>Event Management</span>
-            <span>Booth Production</span>
-          </div> -->
+          <p>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
           <div class="hero-actions">
             <a class="button primary" href="#projects">Our Credential <span aria-hidden="true">+</span></a>
             <a class="button secondary" href="#about">Learn More <span aria-hidden="true">○</span></a>
@@ -133,13 +130,70 @@
             <strong><span>100</span> Cities</strong>
             <strong><span>500</span> District</strong>
           </div>
-          <div class="map-wrap reveal">
+          <!-- <div class="map-wrap reveal">
             <img src="assets/aset-peta.png" alt="Indonesia coverage map">
             <span class="pin pin-one"></span>
             <span class="pin pin-two"></span>
             <span class="pin pin-three"></span>
             <span class="pin pin-four"></span>
             <span class="map-label">Makassar, Sulawesi Selatan</span>
+          </div> -->
+          <div class="scope-map">
+
+            <span class="pin pin-medan"></span>
+            <span class="pin pin-jakarta"></span>
+            <span class="pin pin-balikpapan"></span>
+            <span class="pin pin-makasar"></span>
+            <span class="pin pin-surabaya"></span>
+            <span class="pin pin-denpasar"></span>
+            <span class="pin pin-jayapura"></span>
+
+            <img src="assets/aset-peta.png" alt="Indonesia Map" usemap="#indonesia-map" class="indonesia-map">
+
+            <map name="indonesia-map">
+              <area shape="circle"
+                coords="80,128,10"
+                href="#"
+                alt="Medan"
+                data-city="Medan"
+                data-region="Sumatera Utara">
+              <area shape="circle"
+                coords="320,314,12"
+                href="#"
+                alt="Jakarta"
+                data-city="Jakarta"
+                data-region="DKI Jakarta">
+              <area shape="circle"
+                coords="847,509,12"
+                href="#"
+                alt="Surabaya"
+                data-city="Surabaya"
+                data-region="Jawa Timur">
+              <area shape="circle"
+                coords="1095,420,12"
+                href="#"
+                alt="Balikpapan"
+                data-city="Balikpapan"
+                data-region="Kalimantan Timur">
+              <area shape="circle"
+                coords="1405,400,12"
+                href="#"
+                alt="Makassar"
+                data-city="Makassar"
+                data-region="Sulawesi Selatan">
+              <area shape="circle"
+                coords="1700,470,12"
+                href="#"
+                alt="Ambon"
+                data-city="Ambon"
+                data-region="Maluku">
+            </map>
+
+            <div id="mapPopup" class="map-popup">
+              <h4 id="popupCity"></h4>
+              <p id="popupRegion"></p>
+            </div>
+
           </div>
         </div>
       </section>

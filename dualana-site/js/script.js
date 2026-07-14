@@ -267,3 +267,40 @@ document.addEventListener("keydown", (e) => {
     }
 
 });
+
+const popup = document.getElementById("mapPopup");
+const popupCity = document.getElementById("popupCity");
+const popupRegion = document.getElementById("popupRegion");
+
+document.querySelectorAll("map area").forEach(area=>{
+
+    area.addEventListener("click",(e)=>{
+
+        e.preventDefault();
+
+        popupCity.textContent = area.dataset.city;
+        popupRegion.textContent = area.dataset.region;
+
+        const coords = area.coords.split(",");
+
+        popup.style.left = coords[0] + "px";
+        popup.style.top = coords[1] + "px";
+
+        popup.classList.add("active");
+
+    });
+
+});
+
+document.addEventListener("click",(e)=>{
+
+    if(
+        !e.target.closest(".map-popup") &&
+        e.target.tagName !== "AREA"
+    ){
+
+        popup.classList.remove("active");
+
+    }
+
+});
