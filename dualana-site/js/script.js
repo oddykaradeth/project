@@ -3,8 +3,32 @@ const toggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
 const revealItems = document.querySelectorAll(".reveal");
 
+let lastScrollY = window.scrollY;
+
 function updateHeader() {
-  header.classList.toggle("is-scrolled", window.scrollY > 30);
+
+    const currentScroll = window.scrollY;
+    // background putih setelah scroll
+    header.classList.toggle(
+        "is-scrolled",
+        currentScroll > 30
+    );
+
+    // jangan hide saat di paling atas
+    if(currentScroll <= 30){
+        header.classList.remove("is-hidden");
+    }
+
+    // scroll ke bawah
+    else if(currentScroll > lastScrollY){
+        header.classList.add("is-hidden");
+    }
+
+    // scroll ke atas
+    else{
+        header.classList.remove("is-hidden");
+    }
+    lastScrollY = currentScroll;
 }
 
 toggle.addEventListener("click", () => {
@@ -96,3 +120,150 @@ const observer = new IntersectionObserver(
 revealItems.forEach((item) => observer.observe(item));
 window.addEventListener("scroll", updateHeader, { passive: true });
 updateHeader();
+
+/* ==========================================================
+   PROJECT GALLERY
+========================================================== */
+
+const lightbox = document.getElementById("lightbox");
+const galleryImage = document.getElementById("galleryImage");
+const galleryTitle = document.getElementById("galleryTitle");
+const galleryDescription = document.getElementById("galleryDescription");
+const galleryCounter = document.getElementById("galleryCounter");
+
+const galleryPrev = document.getElementById("galleryPrev");
+const galleryNext = document.getElementById("galleryNext");
+const galleryClose = document.getElementById("galleryClose");
+
+let galleryImages = [];
+let galleryIndex = 0;
+
+function renderGallery() {
+
+    if (!galleryImages.length) return;
+
+    galleryImage.src = galleryImages[galleryIndex];
+    galleryImage.alt = galleryTitle.textContent;
+
+    galleryCounter.textContent =
+        `${galleryIndex + 1} / ${galleryImages.length}`;
+}
+
+function openGallery(project) {
+
+    if (!project) return;
+
+    const gallery = project.dataset.gallery;
+
+    if (!gallery) {
+        console.warn("Project belum memiliki data-gallery");
+        return;
+    }
+
+    galleryImages = JSON.parse(gallery);
+
+    galleryIndex = 0;
+
+    galleryTitle.textContent =
+        project.dataset.title || "";
+
+    galleryDescription.textContent =
+        project.dataset.description || "";
+
+    renderGallery();
+
+    lightbox.classList.add("active");
+    document.body.style.overflow = "hidden";
+}
+
+function closeGallery() {
+
+    lightbox.classList.remove("active");
+
+    document.body.style.overflow = "";
+}
+
+document.querySelectorAll(".project-btn").forEach((btn) => {
+
+    btn.addEventListener("click", (e) => {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        const project = btn.closest(".project-tile");
+
+        openGallery(project);
+
+    });
+
+});
+
+galleryPrev.addEventListener("click", () => {
+
+    if (!galleryImages.length) return;
+
+    galleryIndex =
+        (galleryIndex - 1 + galleryImages.length) %
+        galleryImages.length;
+
+    renderGallery();
+
+});
+
+galleryNext.addEventListener("click", () => {
+
+    if (!galleryImages.length) return;
+
+    galleryIndex =
+        (galleryIndex + 1) %
+        galleryImages.length;
+
+    renderGallery();
+
+});
+
+galleryClose.addEventListener("click", closeGallery);
+
+lightbox.addEventListener("click", (e) => {
+
+    if (e.target === lightbox) {
+
+        closeGallery();
+
+    }
+
+});
+
+document.addEventListener("keydown", (e) => {
+
+    if (!lightbox.classList.contains("active")) return;
+
+    switch (e.key) {
+
+        case "Escape":
+            closeGallery();
+            break;
+
+        case "ArrowLeft":
+
+            galleryIndex =
+                (galleryIndex - 1 + galleryImages.length) %
+                galleryImages.length;
+
+            renderGallery();
+
+            break;
+
+        case "ArrowRight":
+
+            galleryIndex =
+                (galleryIndex + 1) %
+                galleryImages.length;
+
+            renderGallery();
+
+            break;
+
+    }
+
+});
