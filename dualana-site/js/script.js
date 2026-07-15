@@ -59,6 +59,9 @@ const observer = new IntersectionObserver(
 // ini untuk fullscreen modal
 
   const modal = document.getElementById('modal');
+  let serviceGallery = [];
+  let serviceIndex = 0;
+  let serviceInterval = null;
   const modalImage = document.getElementById('modalImage');
   const modalIndex = document.getElementById('modalIndex');
   const modalTitle = document.getElementById('modalTitle');
@@ -67,24 +70,52 @@ const observer = new IntersectionObserver(
 
   let lastFocused = null;
 
+  function changeServiceImage() {
+
+      modalImage.classList.add("fade");
+
+      setTimeout(() => {
+
+          serviceIndex++;
+
+          if (serviceIndex >= serviceGallery.length) {
+              serviceIndex = 0;
+          }
+          modalImage.src = serviceGallery[serviceIndex];
+          modalImage.classList.remove("fade");
+      }, 600);
+  }
+
   function openModal(card){
 
-    modalImage.src = card.dataset.image;
+    serviceGallery = JSON.parse(card.dataset.gallery);
+
+    serviceIndex = 0;
+
+    modalImage.src = serviceGallery[0];
     modalImage.alt = card.dataset.title;
 
     modalIndex.textContent = card.dataset.index;
     modalTitle.textContent = card.dataset.title;
     modalBody.textContent = card.dataset.body;
 
-    lastFocused = document.activeElement;
+    clearInterval(serviceInterval);
 
-    document.body.classList.add('modal-open');
-    modal.classList.add('is-open');
+    if(serviceGallery.length > 1){
 
-    modalClose.focus();
+        serviceInterval = setInterval(changeServiceImage, 3000);
+
+    }
+
+    modal.classList.add("is-open");
+    document.body.classList.add("modal-open");
+
 }
 
   function closeModal(){
+
+    clearInterval(serviceInterval);
+
     modal.classList.remove('is-open');
     document.body.classList.remove('modal-open');
     if(lastFocused) lastFocused.focus();
@@ -121,9 +152,6 @@ revealItems.forEach((item) => observer.observe(item));
 window.addEventListener("scroll", updateHeader, { passive: true });
 updateHeader();
 
-/* ==========================================================
-   PROJECT GALLERY
-========================================================== */
 
 const lightbox = document.getElementById("lightbox");
 const galleryImage = document.getElementById("galleryImage");
@@ -310,5 +338,5 @@ document.querySelectorAll("map area").forEach(area => {
     area.addEventListener("mouseleave", () => {
         popup.classList.remove("active");
     });
-    
+
 });
