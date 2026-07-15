@@ -292,15 +292,23 @@ document.querySelectorAll("map area").forEach(area=>{
 
 });
 
-document.addEventListener("click",(e)=>{
+document.querySelectorAll("map area").forEach(area => {
 
-    if(
-        !e.target.closest(".map-popup") &&
-        e.target.tagName !== "AREA"
-    ){
+    area.addEventListener("mouseenter", (e) => {
 
+        popupCity.textContent = area.dataset.city;
+        popupRegion.textContent = area.dataset.region;
+
+        const coords = area.coords.split(",");
+
+        popup.style.left = coords[0] + "px";
+        popup.style.top = coords[1] + "px";
+
+        popup.classList.add("active");
+    });
+
+    area.addEventListener("mouseleave", () => {
         popup.classList.remove("active");
-
-    }
-
+    });
+    
 });
