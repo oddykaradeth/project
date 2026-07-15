@@ -317,7 +317,7 @@ a {
   min-height:100dvh;
   padding-top:65px;
   padding-bottom:65px;
-  background-image:url(/assets/bg-people.png);
+  background-image:url(assets/bg-people.png);
   background-repeat:no-repeat;
   background-position:center center;
   background-size:contain;
