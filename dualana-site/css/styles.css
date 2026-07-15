@@ -315,12 +315,13 @@ a {
   grid-template-columns:.9fr 1.1fr;
   align-items:center;
   min-height:100dvh;
-  padding-top:90px;
-  padding-bottom:40px;
+  padding-top:65px;
+  padding-bottom:65px;
   background-image:url(/assets/bg-people.png);
   background-repeat:no-repeat;
   background-position:center center;
   background-size:contain;
+  margin: 0 auto;
 }
 
 .section-dots {
@@ -395,7 +396,7 @@ a {
 }
 
 .photo-main {
-  top: 12%;
+  top: 0%;
   aspect-ratio: 4 / 5;
   left:32px;
   width:60%;
@@ -405,7 +406,7 @@ a {
 
 .photo-tall {
   right: 32px;
-  top: 32%;
+  bottom: 0%;
   width:60%;
   aspect-ratio: 4 / 5;
   transform:
@@ -654,8 +655,8 @@ h2 {
   display:flex;
   flex-direction:column;
   justify-content:center;
-  padding-top:90px;
-  padding-bottom:40px;
+  padding-top:65px;
+  padding-bottom:65px;
 }
 
 .projects::before,
@@ -1221,7 +1222,7 @@ h2 {
 .modal-close:hover{
   background:var(--blue);
   color:var(--paper);
-  transform:rotate(90deg);
+  transform:rotate(180deg);
 }
 
 .page{
@@ -1534,8 +1535,8 @@ h2 {
     display:flex;
     flex-direction:column;
     justify-content:center;
-    padding-top:90px;
-    padding-bottom:40px;
+    padding-top:65px;
+    padding-bottom:65px;
   }
 
   .services-head{
