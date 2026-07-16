@@ -32,15 +32,27 @@ function updateHeader() {
 }
 
 toggle.addEventListener("click", () => {
+  
   const isOpen = nav.classList.toggle("is-open");
+
+  toggle.classList.toggle("is-active", isOpen);
+  
   toggle.setAttribute("aria-expanded", String(isOpen));
 });
 
 nav.addEventListener("click", (event) => {
-  if (event.target.matches("a")) {
-    nav.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
-  }
+
+    if(event.target.matches("a")){
+
+        nav.classList.remove("is-open");
+
+        // Mengembalikan icon menjadi hamburger
+        toggle.classList.remove("is-active");
+
+        toggle.setAttribute("aria-expanded","false");
+
+    }
+
 });
 
 const observer = new IntersectionObserver(
