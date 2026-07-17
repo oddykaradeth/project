@@ -1047,7 +1047,7 @@ h2 {
     background: var(--paper);
   }
 
-  .site-header .mobile-logo{
+  .site-header .mobile-logo {
     display:flex;
     align-items:center;
   }
@@ -1579,6 +1579,7 @@ h2 {
     scroll-margin-top:90px;
     background-position: center top;
     padding: 40px 0;
+    height: 100vh;
   }
 
   .about-media {
@@ -1587,13 +1588,14 @@ h2 {
   }
 
   .about-media .photo-main {
+    top: 0;
     left: 0;
     width: 65%;
     height: 65%;
   }
 
   .about-media .photo-tall {
-    top: 25%;
+    bottom: 0;
     right: 0;
     width: 65%;
     height: 65%;
@@ -1621,6 +1623,31 @@ h2 {
 
   .service-card {
     min-height: 430px;
+  }
+
+  .scope {
+    min-height: 100%;
+  }
+
+  .metrics {
+    display: flex;
+    justify-content: center;
+    padding: 24px 0;
+    gap: 40px;
+  }
+
+  .metrics strong {
+    font-weight: 700;
+    width: min-content;
+  }
+
+  .metrics  span {
+    margin: 0;
+  }
+
+  .scope-map .pin {
+    width: 8px;
+    height: 8px;
   }
 
   .project-tile,
@@ -1833,7 +1860,6 @@ h2 {
   @media (max-width:560px){
     .grid{grid-template-columns:1fr;}
     .card{aspect-ratio:1.2/1;}
-    .services{padding:64px 20px 80px;}
   }
 
   @media (prefers-reduced-motion: reduce){
