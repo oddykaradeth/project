@@ -36,7 +36,7 @@ toggle.addEventListener("click", () => {
   const isOpen = nav.classList.toggle("is-open");
 
   toggle.classList.toggle("is-active", isOpen);
-  
+
   toggle.setAttribute("aria-expanded", String(isOpen));
 });
 
@@ -352,3 +352,28 @@ document.querySelectorAll("map area").forEach(area => {
     });
 
 });
+
+if (window.matchMedia("(max-width:768px)").matches) {
+
+    const cards = document.querySelectorAll(".project-tile");
+
+    cards.forEach(card => {
+
+        card.addEventListener("click", function(e){
+
+            if (e.target.closest(".project-btn")) return;
+
+            cards.forEach(item => {
+                if(item !== card){
+                    item.classList.remove("active");
+                }
+            });
+
+            card.classList.toggle("active");
+
+        });
+
+    });
+
+}
+
