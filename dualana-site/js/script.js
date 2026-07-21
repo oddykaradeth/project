@@ -353,6 +353,30 @@ document.querySelectorAll("map area").forEach(area => {
 
 });
 
+const toggleProjectsBtn = document.getElementById("toggleProjects");
+
+if (toggleProjectsBtn) {
+
+    const extraProjects = document.querySelectorAll(".project-extra");
+
+    let expanded = false;
+
+    toggleProjectsBtn.addEventListener("click", () => {
+
+        expanded = !expanded;
+
+        extraProjects.forEach((project) => {
+            project.classList.toggle("show", expanded);
+        });
+
+        toggleProjectsBtn.textContent = expanded
+            ? "Hide projects"
+            : "Show more projects";
+
+    });
+
+}
+
 if (window.matchMedia("(max-width:768px)").matches) {
 
     const cards = document.querySelectorAll(".project-tile");

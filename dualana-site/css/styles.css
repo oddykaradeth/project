@@ -175,16 +175,16 @@ a {
   min-height: 46px;
   padding: 0 28px;
   border-radius: 999px;
-  font-size: 13px;
-  font-weight: 800;
+  font-size: 14px;
+  font-weight: 500;
   min-width: 180px;
 }
 
 .button.primary {
   color: var(--white);
   background: var(--coral);
-  /*box-shadow: 0 18px 34px rgba(255, 98, 104, .28);*/
   box-shadow: none;
+  border: none;
 }
 
 .button.secondary {
@@ -596,22 +596,69 @@ h2 {
   mix-blend-mode: screen;
 }
 
-.pin {
-  position: absolute;
+
+
+.pin-point {
   width: 14px;
   height: 14px;
   border-radius: 50%;
   background: var(--coral);
-  box-shadow: 0 0 0 8px rgba(255, 98, 104, .1);
+  position: absolute;
+  left:var(--x);
+  top:var(--y);
 }
 
-.pin-medan { left: 7%; top: 12%; }
-.pin-jakarta { left: 25%; bottom: 26%; }
-.pin-makasar { left: 53%; top: 64%; }
-.pin-balikpapan { left: 46%; top: 42%; }
-.pin-surabaya { left: 39%; top: 79%; }
-.pin-denpasar { left: 43%; top: 83%; }
-.pin-jayapura { right: 1%;top: 49%; }
+.popover{
+    position:absolute;
+    bottom:24px;
+    left:50%;
+    transform:translateX(-50%);
+
+    min-width:140px;
+    padding:10px 14px;
+
+    background:#fff;
+    border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,.15);
+
+    opacity:0;
+    visibility:hidden;
+    transition:.25s;
+
+    pointer-events:none;
+    z-index:100;
+}
+
+.popover::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-5px;
+
+    width:10px;
+    height:10px;
+
+    background:#fff;
+    transform:translateX(-50%) rotate(45deg);
+}
+
+.popover strong{
+    display:block;
+    font-size:14px;
+    color:#1f2937;
+}
+
+.popover small{
+    display:block;
+    margin-top:2px;
+    font-size:12px;
+    color:#6b7280;
+}
+
+.pin-point:hover .popover{
+    opacity:1;
+    visibility:visible;
+}
 
 .map-label {
   position: absolute;
@@ -695,34 +742,67 @@ h2 {
 }
 
 
-.project-grid{
+.project-grid {
   display:grid;
   grid-template-columns:repeat(6,1fr);
-  grid-template-rows:repeat(4,clamp(120px,11vw,120px));
+  /*grid-template-rows:repeat(4,clamp(120px,11vw,120px));*/
+  grid-auto-rows:clamp(120px,11vw,120px);
   gap:24px;
 }
 
-.project-1{
-    grid-area:1 / 1 / 3 / 3;
+.project-main {
+  grid-area:1 / 1 / 3 / 3;
 }
 
-.project-2{
-    grid-area:1 / 3 / 3 / 7;
+.project-wide {
+  grid-area:1 / 3 / 3 / 7;
 }
 
-.project-3{
-    grid-area:3 / 1 / 5 / 3;
+.project-left {
+  grid-area:3 / 1 / 5 / 3;
 }
 
-.project-4{
-    grid-area:3 / 3 / 5 / 5;
+.project-middle {
+  grid-area:3 / 3 / 5 / 5;
 }
 
-.project-5{
-    grid-area:3 / 5 / 5 / 7;
+.project-right {
+  grid-area:3 / 5 / 5 / 7;
 }
 
-.project-tile{
+.project-action {
+  display:flex;
+  justify-content:center;
+  margin-top:48px;
+}
+
+.project-extra {
+  display:none;
+}
+
+.project-standard{
+    grid-column:span 2;
+    grid-row:span 2;
+}
+
+.project-extra.show {
+  display:block;
+  animation:projectFadeUp .45s ease forwards;
+}
+
+@keyframes projectFadeUp {
+  from {
+    opacity:0;
+    transform:translateY(30px);
+  }
+
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.project-tile {
     position:relative;
     overflow:hidden;
     border-radius:var(--radius);
@@ -1156,6 +1236,7 @@ h2 {
 
   .button.primary {
     box-shadow: none;
+    border: none;
   }
 
   .about,
@@ -1255,6 +1336,7 @@ h2 {
 
   .button.primary {
     box-shadow: none;
+    border: none;
   }
 
   .about {
@@ -1303,6 +1385,17 @@ h2 {
     grid-template-columns: 1fr;
   }
 
+  .card{
+    /*aspect-ratio:auto;*/
+    height:300px;
+  }
+
+  .card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
   .service-card {
     min-height: 430px;
   }
@@ -1329,11 +1422,11 @@ h2 {
     font-size: 24px;
   }
 
-  .project-1,
-  .project-2,
-  .project-3,
-  .project-4,
-  .project-5{
+  .project-main,
+  .project-wide,
+  .project-left,
+  .project-middle,
+  .project-right{
       grid-area:auto;
   }
 
@@ -1435,7 +1528,8 @@ h2 {
 
 .card{
   position:relative;
-  aspect-ratio:0.65/1;
+  /*aspect-ratio:0.65/1;*/
+  min-height:405px;
   border-radius:var(--radius);
   overflow:hidden;
   background:var(--card-bg);
@@ -1918,11 +2012,13 @@ body.lightbox-open{
 }
 
 @media (max-width:1080px){
-  .grid{grid-template-columns:repeat(2,1fr);}
-  .card{aspect-ratio:1.1/1;}
+  .grid {
+    grid-template-columns:repeat(2,1fr);
+  }
 }
 
 @media (max-width:560px){
-  .grid{grid-template-columns:1fr;}
-  .card{aspect-ratio:1.2/1;}
+  .grid{
+    grid-template-columns:1fr;
+  }
 }
