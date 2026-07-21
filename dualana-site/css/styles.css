@@ -1261,6 +1261,17 @@ h2 {
     grid-template-columns: 1fr 1fr;
   }
 
+  .project-main,
+  .project-wide,
+  .project-left,
+  .project-middle,
+  .project-right,
+  .project-standard{
+    grid-area:auto;
+    grid-column:auto;
+    grid-row:auto;
+  }
+
   .projects .section-heading h2 {
     text-align: center;
   }
@@ -1408,14 +1419,24 @@ h2 {
     min-height:auto;
     display:block;
   }
+
   .project-grid{
-    grid-template-columns:1fr;
+    /*grid-template-columns:1fr;
     grid-template-rows:auto;
+    gap:20px;*/
+    grid-template-columns:1fr;
+    grid-auto-rows:auto;
     gap:20px;
   }
 
+  .project-tile {
+    min-height: 320px;
+  }
+
   .project-tile img {
-    aspect-ratio: 4/5;
+    width:100%;
+    height:100%;
+    object-fit:cover;
   }
 
   .project-tile h3 {
@@ -1426,9 +1447,12 @@ h2 {
   .project-wide,
   .project-left,
   .project-middle,
-  .project-right{
-      grid-area:auto;
-  }
+  .project-right,
+.project-standard{
+    grid-area:auto;
+    grid-column:auto;
+    grid-row:auto;
+}
 
   .scope .metrics {
     display: flex;
